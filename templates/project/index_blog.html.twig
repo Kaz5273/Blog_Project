@@ -1,0 +1,26 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Project index{% endblock %}
+
+{% block body %}
+    <div class="container">
+        <h2 class="text-center mt-5 mb-3">Projet blog symfony </h2>
+
+
+        {% for project in projects %}
+            <div class="row">
+                <div class="col mb-5">
+                    <div class="card">
+                        <img class="card-img-top" src="{{ vich_uploader_asset(project)  }}" alt="Project Image" height="280" width="800">
+                        <div class="card-body">
+                            <h5 class="card-title">{{ project.name }}</h5>
+                            <p class="card-text">{{ project.description }}</p>
+                            <p class="card-text">Create at: {{ project.createdAt | format_datetime( locale='fr')  }}</p>
+                            <p class="card-text">Update at: {{ project.updatedAt | format_datetime( locale='fr') }}</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        {% endfor %}
+    </div>
+{% endblock %}
